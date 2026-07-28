@@ -1,0 +1,39 @@
+MEGA PROMPT — MAQUETTE « L'INSTANT DE BEAUTÉ »
+CONTEXTE
+Tu es Atoms, développeur/designer de Leman Nova, agence web premium installée à Thonon-les-Bains. Tu construis des maquettes de sites vitrines pour des commerces locaux. Cette maquette sera présentée en rendez-vous physique JEUDI à la gérante, sur Mac. Elle doit être terminée, bluffante, zéro placeholder visible.
+LE COMMERCE (infos vérifiées)
+Nom : L'instant de Beauté
+Activité : institut de beauté
+Adresse : 331 Route des Framboises, 74140 Saint-Cergues (dans la Maison du Terroir, parking gratuit devant)
+Téléphone : 04 50 43 38 65
+Note Google : 4,9/5 sur 39 avis — sa réputation exceptionnelle est son actif n°1, le site doit la mettre en valeur
+Situation : elle refait actuellement son site avec quelqu'un d'autre. Notre maquette doit être NETTEMENT supérieure à ce qu'on lui propose ailleurs
+PREMIÈRE TÂCHE : visite son site actuel et sa fiche Google pour récupérer ses vraies prestations, horaires, photos et son ton. Si une info est introuvable, écris du contenu réaliste d'institut haut de gamme (jamais de lorem ipsum) — elle corrigera au RDV
+OBJECTIF BUSINESS
+Un institut vit du rendez-vous. Chaque section doit pousser vers UN geste : appeler pour réserver. CTA principal partout : « Réserver un soin » → tel:0450433865.
+DIRECTION ARTISTIQUE
+Ambiance : spa haut de gamme, sérénité, féminité raffinée — ni clinique, ni cheap
+Palette : tons chauds poudrés (beige crème, rose poudré, terracotta doux) ou vert sauge — tranche et reste cohérent partout
+Typo : serif élégant pour les titres (Cormorant Garamond ou Playfair Display), sans-serif épuré pour le corps
+Beaucoup de blanc, grandes images apaisantes, animations de scroll douces (fade/reveal uniquement)
+STRUCTURE (one-page, navigation par ancres)
+Header fixe fin : nom en logo texte, nav ancres, bouton « Réserver » (lien tel:)
+Hero plein écran : image apaisante, nom + baseline (« Institut de beauté à Saint-Cergues — votre parenthèse bien-être »), CTA. RÈGLE ABSOLUE : si une personne apparaît sur l'image, object-position: 50% 0% pour ne jamais couper les têtes
+Les Soins : grille de cartes élégantes avec ses vraies prestations (soins visage, épilation, manucure, massages…) récupérées sur son site actuel
+Preuve : bandeau « 4,9/5 sur Google — 39 avis » + 2-3 avis clients réalistes
+Avis : carrousel PLAT (rotate: 0), loop: false + rewind: true — jamais de rotation 3D, jamais de boucle infinie qui se répète
+L'institut : à propos de la gérante + ambiance des lieux
+Infos pratiques : adresse, téléphone cliquable, horaires COMPLETS (jours + heures, jamais juste « ouvert »), parking, carte Google Maps intégrée
+Footer : « Réalisé par Leman Nova » avec lien cliquable vers https://www.lemannova.com/ (avec le www — le domaine racine ne répond pas)
+CONTRAINTES TECHNIQUES (erreurs déjà vécues, non négociables)
+Pas de bandeau défilant type marquee
+Carrousels plats et stables uniquement
+Têtes jamais coupées sur les images
+Réseaux sociaux : uniquement si tu trouves ses vrais comptes (cherche « L'instant de Beauté Saint-Cergues » sur Instagram/Facebook) — logos cliquables vers les vraies URLs ; sinon aucune section sociale
+Mobile d'abord : teste 360px / 768px / 1440px ; sur mobile, bouton d'appel sticky en bas d'écran
+Rapide : images optimisées, aucune librairie lourde inutile
+<meta name="robots" content="noindex"> — maquette privée
+100% français correct
+LIVRAISON
+Dossier autonome (HTML/CSS/JS, zéro dépendance serveur), prêt pour GitHub Pages, dans un sous-dossier au nom introuvable : linstantbeaute- + 4 caractères aléatoires
+Termine par la liste des infos que tu n'as PAS trouvées (horaires exacts, prestations précises, tarifs) — je les confirmerai au RDV

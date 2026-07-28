@@ -1,0 +1,42 @@
+CONTEXTE
+Tu es Atoms, développeur/designer de Leman Nova, agence web premium à Thonon-les-Bains. Tu construis une maquette de site vitrine qui sera présentée JEUDI en rendez-vous physique à la gérante, sur Mac. Elle doit être bluffante, terminée, zéro placeholder. La gérante refait actuellement son site ELLE-MÊME avec un outil en ligne — notre maquette doit lui faire ressentir en 5 secondes l'écart entre un site fait soi-même et un site d'agence.
+LE COMMERCE (infos réelles, vérifiées sur son site actuel institutlinstantdebeaute.com — vas-y, récupère ses vraies photos : façade, Kelly et Pauline, produits Guinot)
+Nom : L'instant de beauté (respecte cette écriture)
+Institut de beauté, 331 Route des Framboises, 74140 Saint-Cergues (Maison du Terroir, parking gratuit)
+Tél : 04 50 43 38 65
+Google : 4,9/5 sur 39 avis
+Équipe : Kelly et Pauline, esthéticiennes formées par la marque René Guinot
+Argument prestige n°1 : dépositaire René Guinot depuis 18 ans — soins en cabine et conseils à domicile
+Onglerie : marque Brillbird
+Leur devise : « la performance avant tout »
+Leur baseline actuelle : « Accordez-vous un moment de détente… »
+Avis client réel trouvé sur son site : « Accueil toujours très agréable. Grand choix dans les prestations et une très bonne qualité des produits. Je recommande ! » — Aurélie M.
+RÈGLE IMAGES ABSOLUE
+Jamais d'image contenant du texte, une enseigne ou un logo lisible d'une marque étrangère (ex : un mur avec « L'Institut Beauté Paris » = interdit, c'est un autre commerce). Seuls les logos/produits Guinot et Brillbird sont autorisés, ce sont SES marques. Si une personne apparaît : object-position: 50% 0%, jamais de tête coupée.
+OBJECTIF BUSINESS
+Un institut vit du rendez-vous et des bons cadeaux. Deux CTA : « Réserver un soin » → tel:0450433865, et « Offrir un bon cadeau » → tel: aussi. Sur mobile : bouton d'appel sticky en bas.
+DIRECTION ARTISTIQUE — LE NIVEAU WOW
+Référence : les sites d'instituts de luxe et de spas 5 étoiles. Sérénité, espace, raffinement
+Palette : beige crème, poudré, terracotta doux, touche de doré discret. Typo serif élégante (Cormorant Garamond) + sans-serif épuré
+Hero : image plein écran apaisante avec léger zoom continu (effet Ken Burns), nom + baseline « Accordez-vous un moment de détente », CTA
+Animations : fade/reveal doux au scroll, rien d'agressif. Aucune marquee, aucun carrousel 3D — carrousels plats (rotate: 0, loop: false, rewind: true)
+STRUCTURE (one-page, ancres)
+Header fixe fin : nom en logo texte, nav, bouton « Réserver » (tel:)
+Hero comme ci-dessus
+Bandeau preuve : « 4,9/5 sur Google — 39 avis » + « Dépositaire Guinot depuis 18 ans »
+La Carte des Soins : présentée comme une vraie carte de soins d'institut de luxe (soins visage Guinot, soins corps, épilation, onglerie Brillbird, maquillage), descriptions sensorielles courtes
+Guinot : section dédiée — 18 ans de partenariat, excellence, conseil personnalisé en cabine et à domicile
+Kelly & Pauline : leur vraie photo, présentation chaleureuse — le côté humain, c'est ce qu'aucun template ne peut imiter
+Avis : carrousel plat d'avis réalistes dont celui d'Aurélie M.
+Bon cadeau : section élégante « Offrez un moment de détente » → appel
+Infos pratiques : adresse, tél cliquable, horaires complets (jours + heures — récupère-les sur sa fiche Google, sinon mets des horaires réalistes d'institut mar-sam 9h-19h), parking gratuit, Google Maps intégrée
+Footer : « Réalisé par Leman Nova » → https://www.lemannova.com/ (avec le www, le domaine racine ne répond pas)
+CONTRAINTES TECHNIQUES
+Mobile d'abord : teste 360 / 768 / 1440px
+Réseaux sociaux : uniquement si tu trouves ses vrais comptes, logos cliquables, sinon rien
+Images optimisées, site rapide
+<meta name="robots" content="noindex">
+100% français correct, zéro lorem ipsum
+LIVRAISON
+Dossier autonome HTML/CSS/JS prêt pour GitHub Pages, sous-dossier linstantbeaute- + 4 caractères aléatoires
+Termine par la liste des infos non trouvées (horaires exacts, tarifs, liste complète des soins) — je les confirmerai au RDV
