@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>L'Instant de Beauté — Institut de beauté à Saint-Cergues</title>
-    <meta name="description" content="L'Instant de Beauté, institut de beauté à Saint-Cergues. Soins visage Guinot, soins corps Starvac, massages, épilations, onglerie Brillbird. Note Google 4,9/5.">
+    <meta name="description" content="L'Instant de Beauté, institut de beauté à Saint-Cergues. Soins visage Guinot, épilation laser Triwave, onglerie, soins corps. Note Google 4,9/5.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -13,10 +13,19 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="preloader-text" data-split-preload>L'Instant de Beauté</div>
+        <div class="preloader-curtain preloader-curtain--left"></div>
+        <div class="preloader-curtain preloader-curtain--right"></div>
+    </div>
+
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
     <header class="header" id="top">
         <div class="header-inner">
             <a href="#top" class="logo" aria-label="L'Instant de Beauté — retour en haut">L'Instant de Beauté</a>
             <nav class="nav-desktop" aria-label="Navigation principale">
+                <a href="#laser">Laser</a>
                 <a href="#soins">La Carte</a>
                 <a href="#guinot">Guinot</a>
                 <a href="#equipe">L'Équipe</a>
@@ -33,6 +42,7 @@
             </button>
         </div>
         <nav class="nav-mobile" id="nav-mobile" aria-label="Navigation mobile">
+            <a href="#laser">Épilation laser</a>
             <a href="#soins">La Carte des Soins</a>
             <a href="#guinot">Guinot</a>
             <a href="#equipe">L'Équipe</a>
@@ -74,54 +84,165 @@
             </div>
         </section>
 
+        <section class="section section--dark laser" id="laser" aria-labelledby="laser-title">
+            <div class="container laser-inner">
+                <div class="laser-content">
+                    <span class="section-tag"><span class="badge-new">Nouveau</span></span>
+                    <h2 class="section-title" id="laser-title">Épilation laser Triwave</h2>
+                    <p>Découvrez notre nouvelle technologie d'épilation laser Triwave dans votre institut. Une épilation durable, confortable et rapide, adaptée à tous les types de peau.</p>
+                    <p>Prenez rendez-vous pour votre bilan personnalisé et laissez-vous guider par nos esthéticiennes expertes.</p>
+                    <a href="tel:0450433865" class="btn btn-primary">Prendre RDV</a>
+                </div>
+                <div class="laser-features">
+                    <div class="laser-feature">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-4.5 0-8 3.5-8 8 0 4 3 7 8 13 5-6 8-9 8-13 0-4.5-3.5-8-8-8z"/><path d="M12 7v5l3 3"/></svg>
+                        <span>Durable</span>
+                    </div>
+                    <div class="laser-feature">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span>Rapide</span>
+                    </div>
+                    <div class="laser-feature">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.2 7.8l-7-7a2.4 2.4 0 0 0-3.4 0l-7 7a2.4 2.4 0 0 0 0 3.4l7 7a2.4 2.4 0 0 0 3.4 0l7-7a2.4 2.4 0 0 0 0-3.4z"/><path d="M15 9l-6 6"/></svg>
+                        <span>Confortable</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section soins" id="soins" aria-labelledby="soins-title">
             <div class="container">
-                <span class="section-tag">Nos prestations</span>
+                <span class="section-tag">Nos prestations & tarifs</span>
                 <h2 class="section-title" id="soins-title">La Carte des Soins</h2>
-                <p class="section-intro">Des soins d'exception pour sublimer votre beauté et vous offrir un véritable moment de bien-être, sur rendez-vous du lundi au samedi.</p>
-                <div class="soins-grid">
-                    <article class="soin-card">
-                        <div class="soin-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-4.5 0-8 3.5-8 8 0 4 3 7 8 13 5-6 8-9 8-13 0-4.5-3.5-8-8-8z"/><path d="M12 7v5l3 3"/></svg>
+                <p class="section-intro">Une carte élégante inspirée des instituts de luxe, avec nos soins et tarifs. Sur rendez-vous du lundi au samedi.</p>
+                
+                <div class="carte-tabs" role="tablist" aria-label="Catégories de soins">
+                    <button class="carte-tab active" role="tab" aria-selected="true" aria-controls="tab-visage" id="tab-btn-visage">Visage</button>
+                    <button class="carte-tab" role="tab" aria-selected="false" aria-controls="tab-ongles" id="tab-btn-ongles">Ongles</button>
+                    <button class="carte-tab" role="tab" aria-selected="false" aria-controls="tab-epilations" id="tab-btn-epilations">Épilations</button>
+                    <button class="carte-tab" role="tab" aria-selected="false" aria-controls="tab-regard" id="tab-btn-regard">Regard</button>
+                    <button class="carte-tab" role="tab" aria-selected="false" aria-controls="tab-permanent" id="tab-btn-permanent">Maquillage permanent</button>
+                    <button class="carte-tab" role="tab" aria-selected="false" aria-controls="tab-corps" id="tab-btn-corps">Corps</button>
+                    <button class="carte-tab" role="tab" aria-selected="false" aria-controls="tab-laser" id="tab-btn-laser">Laser</button>
+                </div>
+
+                <div class="carte-panels">
+                    <div class="carte-panel active" id="tab-visage" role="tabpanel" aria-labelledby="tab-btn-visage">
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/hero-spa.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Soins du visage</h3>
+                            <ul class="price-list">
+                                <li><span class="price-name">Soin jeune (-20 ans)</span><span class="price-dots"></span><span class="price-value">45 €</span></li>
+                                <li><span class="price-name">Soin Détoxygène</span><span class="price-dots"></span><span class="price-value">97 €</span></li>
+                                <li><span class="price-name">Hydradermie 1000</span><span class="price-dots"></span><span class="price-value">97 €</span></li>
+                                <li><span class="price-name">Soin hydra PH-Hydrabrasion</span><span class="price-dots"></span><span class="price-value">97 €</span></li>
+                                <li><span class="price-name">Soin Age Summum</span><span class="price-dots"></span><span class="price-value">97 €</span></li>
+                                <li><span class="price-name">Soin Lift Summum</span><span class="price-dots"></span><span class="price-value">97 €</span></li>
+                                <li><span class="price-name">Soin Équilibre pureté</span><span class="price-dots"></span><span class="price-value">70 €</span></li>
+                                <li><span class="price-name">Soin Eye Logic</span><span class="price-dots"></span><span class="price-value">55 €</span></li>
+                                <li><span class="price-name">Soin Hydralift</span><span class="price-dots"></span><span class="price-value">105 €</span></li>
+                                <li><span class="price-name">Maquillage jour</span><span class="price-dots"></span><span class="price-value">40 €</span></li>
+                                <li><span class="price-name">Maquillage Mariée + essai</span><span class="price-dots"></span><span class="price-value">110 €</span></li>
+                            </ul>
                         </div>
-                        <h3>Soins Visage Guinot</h3>
-                        <p>Protocoles sur-mesure avec les soins Guinot : Hydradermie, Liftosome, Age Logic et Beauty Neuve. Une expertise ciblée pour une peau éclatante, hydratée et repulpée.</p>
-                    </article>
-                    <article class="soin-card">
-                        <div class="soin-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9z"/><path d="M12 12l4-4"/><path d="M12 12V7"/><path d="M12 12H7"/></svg>
+                    </div>
+
+                    <div class="carte-panel" id="tab-ongles" role="tabpanel" aria-labelledby="tab-btn-ongles" hidden>
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/guinot-products.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Ongles</h3>
+                            <ul class="price-list">
+                                <li><span class="price-name">Manucure brésilienne</span><span class="price-dots"></span><span class="price-value">30 €</span></li>
+                                <li><span class="price-name">Foot Peeling</span><span class="price-dots"></span><span class="price-value">47 €</span></li>
+                                <li><span class="price-name">Pose vernis ou french</span><span class="price-dots"></span><span class="price-value">9 – 12 €</span></li>
+                                <li><span class="price-name">Pose de gel sur ongles naturels</span><span class="price-dots"></span><span class="price-value">45 €</span></li>
+                                <li><span class="price-name">Remplissage gel</span><span class="price-dots"></span><span class="price-value">52 €</span></li>
+                                <li><span class="price-name">Pose d'ongles gel</span><span class="price-dots"></span><span class="price-value">67 €</span></li>
+                                <li><span class="price-name">Forfait manucure + gel</span><span class="price-dots"></span><span class="price-value">52 €</span></li>
+                                <li><span class="price-name">Forfait beauté des pieds + gel</span><span class="price-dots"></span><span class="price-value">58 €</span></li>
+                                <li><span class="price-name">Pose semi-permanent</span><span class="price-dots"></span><span class="price-value">39 €</span></li>
+                                <li><span class="price-name">Remplissage semi-permanent</span><span class="price-dots"></span><span class="price-value">43 €</span></li>
+                            </ul>
                         </div>
-                        <h3>Soins Corps & Starvac</h3>
-                        <p>Modelages corporels relaxants et soins Starvac pour une silhouette affinée et une peau tonique. Un moment de détente allié à des résultats visibles.</p>
-                    </article>
-                    <article class="soin-card">
-                        <div class="soin-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.2 7.8l-7-7a2.4 2.4 0 0 0-3.4 0l-7 7a2.4 2.4 0 0 0 0 3.4l7 7a2.4 2.4 0 0 0 3.4 0l7-7a2.4 2.4 0 0 0 0-3.4z"/><path d="M15 9l-6 6"/></svg>
+                    </div>
+
+                    <div class="carte-panel" id="tab-epilations" role="tabpanel" aria-labelledby="tab-btn-epilations" hidden>
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/banner-spa.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Épilations</h3>
+                            <ul class="price-list">
+                                <li><span class="price-name">Sourcils</span><span class="price-dots"></span><span class="price-value">9 €</span></li>
+                                <li><span class="price-name">Sourcils au fil</span><span class="price-dots"></span><span class="price-value">14 €</span></li>
+                                <li><span class="price-name">Lèvre</span><span class="price-dots"></span><span class="price-value">7 €</span></li>
+                                <li><span class="price-name">Lèvre + menton</span><span class="price-dots"></span><span class="price-value">12 €</span></li>
+                                <li><span class="price-name">½ jambes</span><span class="price-dots"></span><span class="price-value">25 €</span></li>
+                                <li><span class="price-name">¾ jambes</span><span class="price-dots"></span><span class="price-value">31 €</span></li>
+                                <li><span class="price-name">Jambes complètes</span><span class="price-dots"></span><span class="price-value">34 €</span></li>
+                                <li><span class="price-name">Bikini</span><span class="price-dots"></span><span class="price-value">17 €</span></li>
+                                <li><span class="price-name">Bikini intégral</span><span class="price-dots"></span><span class="price-value">26 €</span></li>
+                                <li><span class="price-name">Aisselles</span><span class="price-dots"></span><span class="price-value">12 €</span></li>
+                                <li><span class="price-name">Avant-bras</span><span class="price-dots"></span><span class="price-value">15 €</span></li>
+                                <li><span class="price-name">Forfait ½ jambes + bikini + aisselles</span><span class="price-dots"></span><span class="price-value">46 €</span></li>
+                                <li><span class="price-name">Forfait jambes complètes + bikini + aisselles</span><span class="price-dots"></span><span class="price-value">53 €</span></li>
+                                <li><span class="price-name">Forfait JC + bikini intégral + aisselles</span><span class="price-dots"></span><span class="price-value">61 €</span></li>
+                            </ul>
                         </div>
-                        <h3>Épilation</h3>
-                        <p>Épilation à la cire tiède pour toutes les zones, avec douceur et précision. Épilation au fil pour le visage, une technique délicate et longue durée.</p>
-                    </article>
-                    <article class="soin-card">
-                        <div class="soin-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 21l-4-6h8l-4 6z"/><path d="M12 3v12"/></svg>
+                    </div>
+
+                    <div class="carte-panel" id="tab-regard" role="tabpanel" aria-labelledby="tab-btn-regard" hidden>
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/hero-spa.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Le regard</h3>
+                            <ul class="price-list">
+                                <li><span class="price-name">Teinture de cils</span><span class="price-dots"></span><span class="price-value">19 €</span></li>
+                                <li><span class="price-name">Teinture de sourcils</span><span class="price-dots"></span><span class="price-value">10 €</span></li>
+                                <li><span class="price-name">Réhaussement de cils</span><span class="price-dots"></span><span class="price-value">52 €</span></li>
+                            </ul>
                         </div>
-                        <h3>Onglerie Brillbird</h3>
-                        <p>Pose gel avec chablons, semi-permanent, manucure et beauté des pieds avec les produits professionnels Brillbird. Des ongles sublimés dans les règles de l'art.</p>
-                    </article>
-                    <article class="soin-card">
-                        <div class="soin-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+
+                    <div class="carte-panel" id="tab-permanent" role="tabpanel" aria-labelledby="tab-btn-permanent" hidden>
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/guinot-products.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Maquillage permanent</h3>
+                            <ul class="price-list">
+                                <li><span class="price-name">Sourcils</span><span class="price-dots"></span><span class="price-value">180 – 320 €</span></li>
+                                <li><span class="price-name">Eye liner</span><span class="price-dots"></span><span class="price-value">210 – 320 €</span></li>
+                                <li><span class="price-name">Contour lèvres</span><span class="price-dots"></span><span class="price-value">320 €</span></li>
+                            </ul>
                         </div>
-                        <h3>Beauté du Regard & Maquillage</h3>
-                        <p>Maquillage longue durée par Kelly, rehaussement de cils et beauté du regard pour un regard ouvert et lumineux au quotidien comme pour les événements.</p>
-                    </article>
-                    <article class="soin-card">
-                        <div class="soin-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18"/><path d="M4 10h16"/><path d="M4 14h16"/></svg>
+                    </div>
+
+                    <div class="carte-panel" id="tab-corps" role="tabpanel" aria-labelledby="tab-btn-corps" hidden>
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/banner-spa.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Soins du corps</h3>
+                            <ul class="price-list">
+                                <li><span class="price-name">Pressodynamie</span><span class="price-dots"></span><span class="price-value">dès 27 €</span></li>
+                                <li><span class="price-name">Starvac stretching cellulaire</span><span class="price-dots"></span><span class="price-value">dès 45 €</span></li>
+                                <li><span class="price-name">Bilan corps</span><span class="price-dots"></span><span class="price-value">50 €</span></li>
+                            </ul>
                         </div>
-                        <h3>Dermaplaning</h3>
-                        <p>Exfoliation douce au scalpel pour un teint lisse et lumineux. Élimine le duvet et les cellules mortes en douceur, sans temps de récupération.</p>
-                    </article>
+                    </div>
+
+                    <div class="carte-panel" id="tab-laser" role="tabpanel" aria-labelledby="tab-btn-laser" hidden>
+                        <div class="carte-panel-bg" style="background-image: url('./assets/images/hero-spa.jpg')"></div>
+                        <div class="carte-panel-overlay"></div>
+                        <div class="carte-panel-content">
+                            <h3 class="carte-panel-title">Épilations laser</h3>
+                            <p class="carte-panel-intro">Tarifs personnalisés selon la zone et le nombre de séances.</p>
+                            <ul class="price-list price-list--single">
+                                <li><span class="price-name">Devis sur mesure</span><span class="price-dots"></span><span class="price-value">sur demande</span></li>
+                            </ul>
+                            <a href="tel:0450433865" class="btn btn-primary">Demander un devis</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -137,7 +258,7 @@
             </div>
         </section>
 
-        <section class="section guinot" id="guinot" aria-labelledby="guinot-title">
+        <section class="section section--dark guinot" id="guinot" aria-labelledby="guinot-title">
             <div class="container guinot-grid">
                 <div class="guinot-image img-reveal" data-parallax="image">
                     <img src="./assets/images/guinot-products.jpg" alt="Produits de soin Guinot" loading="lazy">
@@ -215,7 +336,7 @@
                 <div class="cadeau-text">
                     <span class="section-tag">Idée cadeau</span>
                     <h2 class="section-title" id="cadeau-title">Offrez un moment de détente</h2>
-                    <p>Faites plaisir à vos proches avec un bon cadeau personnalisé. Soin visage Guinot, modelage corps, onglerie Brillbird… Choisissez la prestation ou le montant, nous préparons un écrin élégant à offrir.</p>
+                    <p>Faites plaisir à vos proches avec un bon cadeau personnalisé. Soin visage Guinot, modelage corps, onglerie… Choisissez la prestation ou le montant, nous préparons un écrin élégant à offrir.</p>
                     <a href="tel:0450433865" class="btn btn-primary">Offrir un bon cadeau</a>
                 </div>
             </div>
