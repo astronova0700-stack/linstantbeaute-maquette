@@ -807,23 +807,19 @@ button {
 }
 
 .guinot-image {
-    background: var(--cream);
-    border-radius: var(--radius-lg);
-    padding: 28px;
-    box-shadow: var(--shadow-card);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 320px;
 }
 
 .guinot-image img {
     width: 100%;
-    max-width: 420px;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    mix-blend-mode: multiply;
 }
 
 .guinot-text p {
@@ -996,6 +992,11 @@ button {
     align-items: start;
 }
 
+.cadeau-preview {
+    order: -1;
+    width: 100%;
+}
+
 .cadeau-form {
     background: var(--white);
     border-radius: var(--radius-lg);
@@ -1074,13 +1075,13 @@ button {
 
 .gift-card {
     width: 100%;
-    max-width: 420px;
+    max-width: 100%;
     aspect-ratio: 1.6 / 1;
     background: var(--brown);
-    border-radius: var(--radius-lg);
-    padding: 36px 32px;
+    border-radius: 24px;
+    padding: 36px 28px;
     color: var(--gold);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.22);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1109,9 +1110,9 @@ button {
 }
 
 .gift-card-label {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-cream-light);
     margin-bottom: 4px;
@@ -1119,8 +1120,8 @@ button {
 
 .gift-card-amount {
     font-family: var(--font-serif);
-    font-size: 3rem;
-    font-weight: 600;
+    font-size: 5rem;
+    font-weight: 700;
     color: var(--gold);
     line-height: 1;
     margin-bottom: 18px;
@@ -1128,21 +1129,21 @@ button {
 
 .gift-card-for,
 .gift-card-from {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--text-cream);
     margin-bottom: 4px;
 }
 
 .gift-card-message {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-style: italic;
     color: var(--text-cream-light);
-    margin: 10px 0 16px;
+    margin: 12px 0 18px;
     max-width: 90%;
 }
 
 .gift-card-footer {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-cream-light);
@@ -1368,7 +1369,8 @@ button {
     }
 
     .cadeau-grid {
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 48px;
     }
 
     .visage-two-cols {
@@ -1376,14 +1378,15 @@ button {
     }
 
     .gift-card {
-        min-width: 480px;
-        max-width: 520px;
+        min-width: 560px;
+        max-width: 100%;
         width: 100%;
-        padding: 48px 44px;
+        padding: 48px;
+        border-radius: 24px;
     }
 
     .gift-card-amount {
-        font-size: 4.5rem;
+        font-size: 5rem;
     }
 
     .price-list {
@@ -1458,10 +1461,11 @@ button {
 
     .gift-card {
         padding: 28px 22px;
+        border-radius: 20px;
     }
 
     .gift-card-amount {
-        font-size: 3rem;
+        font-size: 2.6rem;
     }
 
     .carte-tab {
