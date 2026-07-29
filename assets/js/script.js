@@ -1,7 +1,12 @@
 (function() {
     'use strict';
 
-    const BOOKING_URL = "TON_LIEN_CAL_COM_ICI";
+    const BOOKING_URL = "https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes";
+
+    function isInvalidBookingUrl(url) {
+        const lower = url.toLowerCase();
+        return lower.includes('ton_lien') || lower.includes('colle_ton_lien') || lower.includes('example.com') || lower.includes('placeholder');
+    }
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth < 768;
@@ -369,6 +374,10 @@
 
     // ============ BOOKING LINKS ============
     function initBookingLinks() {
+        if (isInvalidBookingUrl(BOOKING_URL)) {
+            console.error("[BOOKING] URL de réservation invalide :", BOOKING_URL);
+            return;
+        }
         document.querySelectorAll('.booking-link').forEach(link => {
             link.href = BOOKING_URL;
         });
