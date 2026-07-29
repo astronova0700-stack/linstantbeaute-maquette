@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    const BOOKING_URL = "TON_LIEN_CAL_COM_ICI";
+
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth < 768;
 
@@ -43,6 +45,7 @@
     function initMobileMenu() {
         const toggle = document.querySelector('.nav-toggle');
         const nav = document.querySelector('.nav-mobile');
+        const logo = document.querySelector('.logo');
         if (!toggle || !nav) return;
         toggle.addEventListener('click', () => {
             const open = nav.classList.toggle('open');
@@ -56,6 +59,15 @@
                 toggle.setAttribute('aria-expanded', 'false');
             });
         });
+        if (logo) {
+            logo.addEventListener('click', () => {
+                if (nav.classList.contains('open')) {
+                    nav.classList.remove('open');
+                    toggle.classList.remove('active');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
     }
 
     // ============ REVEAL ON SCROLL ============
@@ -207,16 +219,40 @@
         const form = document.getElementById('cadeau-form');
         if (!form) return;
 
-        const amountBtns = form.querySelectorAll('.amount-btn');
+        const modeBtns = form.querySelectorAll('.mode-btn');
+        const modeMontant = document.getElementById('mode-montant');
+        const modePrestation = document.getElementById('mode-prestation');
+        const amountBtns = form.querySelectorAll('.amount-btn:not(.mode-btn)');
         const customAmountGroup = document.getElementById('amount-custom');
         const customInput = document.getElementById('montant-libre');
+        const prestationSelect = document.getElementById('prestation-select');
 
         const previewAmount = document.getElementById('preview-amount');
         const previewBeneficiaire = document.getElementById('preview-beneficiaire');
         const previewOffreur = document.getElementById('preview-offreur');
         const previewMessage = document.getElementById('preview-message');
+        const prestationName = document.getElementById('prestation-name');
 
+        let currentMode = 'montant';
         let currentAmount = '50';
+        let currentPrestation = { name: '', price: '' };
+
+        function setMode(mode) {
+            currentMode = mode;
+            modeBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-mode') === mode));
+            if (mode === 'montant') {
+                modeMontant.classList.remove('hidden');
+                modePrestation.classList.add('hidden');
+            } else {
+                modeMontant.classList.add('hidden');
+                modePrestation.classList.remove('hidden');
+            }
+            updatePreview();
+        }
+
+        modeBtns.forEach(btn => {
+            btn.addEventListener('click', () => setMode(btn.getAttribute('data-mode')));
+        });
 
         amountBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -239,8 +275,32 @@
             updatePreview();
         });
 
+        if (prestationSelect) {
+            prestationSelect.addEventListener('change', () => {
+                const option = prestationSelect.options[prestationSelect.selectedIndex];
+                const name = option.value;
+                const price = option.getAttribute('data-prix');
+                currentPrestation = name ? { name, price } : { name: '', price: '' };
+                updatePreview();
+            });
+        }
+
         function updatePreview() {
-            previewAmount.textContent = currentAmount;
+            const beneficiaire = document.getElementById('beneficiaire').value.trim();
+            if (currentMode === 'montant') {
+                previewAmount.textContent = currentAmount;
+                prestationName.textContent = '';
+                previewBeneficiaire.textContent = beneficiaire || '...';
+            } else {
+                previewAmount.textContent = currentPrestation.price || '0';
+                if (!beneficiaire) {
+                    previewBeneficiaire.textContent = '';
+                    prestationName.textContent = currentPrestation.name ? ` : ${currentPrestation.name}` : '';
+                } else {
+                    previewBeneficiaire.textContent = beneficiaire;
+                    prestationName.textContent = currentPrestation.name ? ` — ${currentPrestation.name}` : '';
+                }
+            }
         }
 
         ['beneficiaire', 'email-beneficiaire', 'offreur', 'message'].forEach(id => {
@@ -248,7 +308,10 @@
             if (!input) return;
             input.addEventListener('input', () => {
                 const val = input.value.trim();
-                if (id === 'beneficiaire') previewBeneficiaire.textContent = val || '...';
+                if (id === 'beneficiaire') {
+                    previewBeneficiaire.textContent = val || '...';
+                    if (currentMode === 'prestation') updatePreview();
+                }
                 if (id === 'offreur') previewOffreur.textContent = val || '...';
                 if (id === 'message') previewMessage.textContent = val ? `"${val}"` : '';
             });
@@ -260,17 +323,30 @@
             const email = document.getElementById('email-beneficiaire').value.trim();
             const offreur = document.getElementById('offreur').value.trim();
             const message = document.getElementById('message').value.trim();
-            const montant = currentAmount;
 
-            const subject = encodeURIComponent(`Bon cadeau ${montant}€ - ${beneficiaire || 'Bénéficiaire'}`);
-            const body = encodeURIComponent(
-                `Bon cadeau L'Instant de Beauté\n\n` +
-                `Montant : ${montant}€\n` +
-                `Bénéficiaire : ${beneficiaire || '-'}\n` +
-                `Email bénéficiaire : ${email || '-'}\n` +
-                `De la part de : ${offreur || '-'}\n\n` +
-                `Message :\n${message || '-'}`
-            );
+            let subject, body;
+            if (currentMode === 'prestation' && currentPrestation.name) {
+                subject = encodeURIComponent(`Bon cadeau ${currentPrestation.name} - ${beneficiaire || 'Bénéficiaire'}`);
+                body = encodeURIComponent(
+                    `Bon cadeau L'Instant de Beauté\n\n` +
+                    `Prestation choisie : ${currentPrestation.name} — ${currentPrestation.price}€\n` +
+                    `Bénéficiaire : ${beneficiaire || '-'}\n` +
+                    `Email bénéficiaire : ${email || '-'}\n` +
+                    `De la part de : ${offreur || '-'}\n\n` +
+                    `Message :\n${message || '-'}`
+                );
+            } else {
+                const montant = currentAmount;
+                subject = encodeURIComponent(`Bon cadeau ${montant}€ - ${beneficiaire || 'Bénéficiaire'}`);
+                body = encodeURIComponent(
+                    `Bon cadeau L'Instant de Beauté\n\n` +
+                    `Montant : ${montant}€\n` +
+                    `Bénéficiaire : ${beneficiaire || '-'}\n` +
+                    `Email bénéficiaire : ${email || '-'}\n` +
+                    `De la part de : ${offreur || '-'}\n\n` +
+                    `Message :\n${message || '-'}`
+                );
+            }
             window.location.href = `mailto:contact@institutlinstantdebeaute.com?subject=${subject}&body=${body}`;
         });
     }
@@ -291,6 +367,36 @@
         });
     }
 
+    // ============ BOOKING LINKS ============
+    function initBookingLinks() {
+        document.querySelectorAll('.booking-link').forEach(link => {
+            link.href = BOOKING_URL;
+        });
+    }
+
+    // ============ BOOKING SELECTS ============
+    function initBookingSelects() {
+        document.querySelectorAll('.reserver-select').forEach(select => {
+            const container = select.closest('.carte-reserver');
+            const btn = container ? container.querySelector('.reserver-btn') : null;
+            if (!btn) return;
+
+            function update() {
+                const option = select.options[select.selectedIndex];
+                const name = option.value;
+                const prix = option.getAttribute('data-prix');
+                if (!name || !prix) {
+                    btn.textContent = 'Réserver ce soin';
+                    return;
+                }
+                btn.textContent = `Réserver — ${name} · ${prix} €`;
+            }
+
+            select.addEventListener('change', update);
+            update();
+        });
+    }
+
     // ============ INIT ============
     document.addEventListener('DOMContentLoaded', () => {
         initPreloader();
@@ -302,6 +408,8 @@
         initCounters();
         initCarteTabs();
         initCarousel();
+        initBookingLinks();
+        initBookingSelects();
         initCadeau();
         initSmoothAnchors();
     });
