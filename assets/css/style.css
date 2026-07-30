@@ -1044,7 +1044,6 @@ button {
 }
 
 .cadeau-preview {
-    order: -1;
     width: 100%;
 }
 
@@ -1419,7 +1418,7 @@ button {
     }
 
     .cadeau-grid {
-        grid-template-columns: 1.3fr 0.9fr;
+        grid-template-columns: 0.9fr 1.3fr;
         gap: 48px;
     }
 
